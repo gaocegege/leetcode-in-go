@@ -6,11 +6,14 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var resMap = make(map[int]int)
+var resMap = map[int]int{}
 
 var maxTime = 0
 
 func findFrequentTreeSum(root *TreeNode) []int {
+	// Fix the inconsistency bug.
+	resMap = map[int]int{}
+	maxTime = 0
 	res := make([]int, 0)
 	getAndSetSum(root)
 	for k, v := range resMap {
